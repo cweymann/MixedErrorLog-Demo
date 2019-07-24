@@ -1,0 +1,52 @@
+This document should allow you to recreate the project step by step for testing puroposes
+(was done with cocoapods 1.7.4)
+
+Goal: Objective-C/Swift Library with dependencies (CocoalumberJack) without Warnings that can be used in AppExtensions!
+
+pod lib create (iOS,objc)
+
+podspec:
+[...]
+  s.ios.deployment_target = '10.0'
+  s.swift_version = '5.0'
+  s.dependency 'CocoaLumberjack/Swift'
+[...]
+
+Example/Podfile:
+[...]
+platform :ios, '10.0'
+[...]
+
+cd Example 
+pod update
+
+=> Everything OK
+
+Swift/Objc Mix
+
+add swift and objc files to lib
+pod update 
+use them in example (#import .h & -Swift.h)
+clean & build
+=> Everything OK (minimla mixed lib e36cd8e8053ce87e4b2f56cdaa0fd25ed8aa5897)
+
+
+ensure that lib is safe to use in app extensions
+podspec:
+[...]
+s.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES'}
+[...]
+
+pod update / build:
+-> linking against a dylib which is not safe for use in application extensions: /Users/claus/Library/Developer/Xcode/DerivedData/.../CocoaLumberjack/CocoaLumberjack.framework/CocoaLumberjack
+
+remove use_frameworks! from Podfile 
+-> '...-Swift.h' file not found
+
+use @import <Module> instead
+
+-> Could not find auto-linked library 'swiftSwiftOnoneSupport'
+
+add any swift file to Examples Project including bridging header or (TODO: alternative from stack overflow, not tested)
+
+-> OK

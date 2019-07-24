@@ -1,0 +1,34 @@
+{
+  "name": "MixedErrorLog",
+  "version": "0.1.2",
+  "summary": "A short description of MixedErrorLog.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/cweymann/MixedErrorLog-Demo.git",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "clausweymann": "c.weymann@avm.de"
+  },
+  "source": {
+    "git": "https://github.com/cweymann/MixedErrorLog-Demo.git",
+    "tag": "0.1.2"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "swift_versions": "5.0",
+  "dependencies": {
+    "CocoaLumberjack/Swift": [
+
+    ]
+  },
+  "pod_target_xcconfig": {
+    "APPLICATION_EXTENSION_API_ONLY": "YES",
+    "DEFINES_MODULE": "YES"
+  },
+  "source_files": "MixedErrorLog/Classes/**/*",
+  "public_header_files": "Pod/Classes/**/*.h",
+  "swift_version": "5.0"
+}
