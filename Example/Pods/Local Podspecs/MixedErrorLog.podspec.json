@@ -1,8 +1,8 @@
 {
   "name": "MixedErrorLog",
   "version": "0.1.2",
-  "summary": "A short description of MixedErrorLog.",
-  "description": "TODO: Add long description of the pod here.",
+  "summary": "Demo for podspec / podfile configuration proplems with static library vs. framework",
+  "description": "Demo Project to show problems arising with mixing cocoapods/ ojb-c / swift/ frameworks / static libraries\nGoal:\nObjective-C/Swift Library with dependencies (CocoalumberJack) without Warnings that can be used in AppExtensions!",
   "homepage": "https://github.com/cweymann/MixedErrorLog-Demo.git",
   "license": {
     "type": "MIT",
@@ -29,6 +29,5 @@
     "DEFINES_MODULE": "YES"
   },
   "source_files": "MixedErrorLog/Classes/**/*",
-  "public_header_files": "Pod/Classes/**/*.h",
   "swift_version": "5.0"
 }

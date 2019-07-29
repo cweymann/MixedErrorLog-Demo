@@ -7,6 +7,7 @@
 #import "ObjcErrorLog.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import <MixedErrorLog/MixedErrorLog-Swift.h>
+//#import "MixedErrorLog-Swift.h"
 
 @implementation ObjcErrorLog
 static const DDLogLevel ddLogLevel = DDLogLevelDebug;
