@@ -6,8 +6,8 @@
 
 #import "ObjcErrorLog.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
-#import <MixedErrorLog/MixedErrorLog-Swift.h>
-//#import "MixedErrorLog-Swift.h"
+#import <MixedErrorLog/MixedErrorLog-Swift.h> /// does only work when used as a framwork
+//#import "MixedErrorLog-Swift.h" /// does only work when used as a (static) library (.a)
 
 @implementation ObjcErrorLog
 static const DDLogLevel ddLogLevel = DDLogLevelDebug;
