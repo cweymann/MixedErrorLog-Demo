@@ -11,10 +11,8 @@ import MixedErrorLog
 
 class SwiftDemo : NSObject {
 	@objc func log(){
-		//call swift from lib
 		let log = SwiftErrorLog()
 		log.error("SwiftDemo->swift")
-
 		ObjcErrorLog.error("SwiftDemo->objc")
 	}
 }

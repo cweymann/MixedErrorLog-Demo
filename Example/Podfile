@@ -2,6 +2,7 @@ platform :ios, '10.0'
 
 use_frameworks!
 
+# fix for warning: linking against a dylib which is not safe for use in application extensions
 $static_framework = ['MixedErrorLog']
 
 pre_install do |installer|
