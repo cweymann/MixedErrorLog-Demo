@@ -1,22 +1,22 @@
 platform :ios, '10.0'
 
-use_frameworks!
 
-# fix for warning: linking against a dylib which is not safe for use in application extensions
+use_frameworks!
+#fix for warning: linking against a dylib which is not safe for use in application extensions
 $static_framework = ['MixedErrorLog']
 
 pre_install do |installer|
-	installer.pod_targets.each do |pod|
-		if $static_framework.include?(pod.name)
-			def pod.host_requires_frameworks?
-			false
-		end
-		puts "Overriding the build_as_static_framework? method for #{pod.name}"
-		def pod.build_as_static_framework?
-		true
-	end
-end
-end
+  installer.pod_targets.each do |pod|
+    if $static_framework.include?(pod.name)
+      def pod.host_requires_frameworks?
+        false
+      end
+      puts "Overriding the build_as_static_framework? method for #{pod.name}"
+      def pod.build_as_static_framework?
+        true
+      end
+    end
+  end
 end
 
 target 'MixedErrorLog_Example' do
@@ -29,15 +29,16 @@ target 'MixedErrorLog_Example' do
   end
 end
 
+#experiment
 post_install do |installer|
-	installer.pods_project.targets.each do |target|
-		compatibilityPhase = target.build_phases.find { |ph| ph.display_name == 'Copy generated compatibility header' }
-		if compatibilityPhase
-			build_phase = target.new_shell_script_build_phase('Copy Swift Header')
-			build_phase.shell_script = <<-SH.strip_heredoc
-			COMPATIBILITY_HEADER_PATH="${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h"
-			ditto "${COMPATIBILITY_HEADER_PATH}" "${PODS_ROOT}/Headers/Public/${PRODUCT_MODULE_NAME}/${PRODUCT_MODULE_NAME}-Swift.h"
-			SH
-		end
-	end
+  installer.pods_project.targets.each do |target|
+    compatibilityPhase = target.build_phases.find { |ph| ph.display_name == 'Copy generated compatibility header' }
+    if compatibilityPhase
+      build_phase = target.new_shell_script_build_phase('Copy Swift Header')
+      build_phase.shell_script = <<-SH.strip_heredoc
+      COMPATIBILITY_HEADER_PATH="${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h"
+      ditto "${COMPATIBILITY_HEADER_PATH}" "${PODS_ROOT}/Headers/Public/${PRODUCT_MODULE_NAME}/${PRODUCT_MODULE_NAME}-Swift.h"
+      SH
+    end
+  end
 end
