@@ -1,4 +1,4 @@
-framework module MixedErrorLog {
+module MixedErrorLog {
   umbrella header "MixedErrorLog-umbrella.h"
 
   export *

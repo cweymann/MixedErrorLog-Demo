@@ -1,23 +1,23 @@
 platform :ios, '10.0'
 
 
-use_frameworks!
-#fix for warning: linking against a dylib which is not safe for use in application extensions
-$static_framework = ['MixedErrorLog']
-
-pre_install do |installer|
-  installer.pod_targets.each do |pod|
-    if $static_framework.include?(pod.name)
-      def pod.host_requires_frameworks?
-        false
-      end
-      puts "Overriding the build_as_static_framework? method for #{pod.name}"
-      def pod.build_as_static_framework?
-        true
-      end
-    end
-  end
-end
+#use_frameworks!
+##fix for warning: linking against a dylib which is not safe for use in application extensions
+#$static_framework = ['MixedErrorLog']
+#
+#pre_install do |installer|
+#  installer.pod_targets.each do |pod|
+#    if $static_framework.include?(pod.name)
+#      def pod.host_requires_frameworks?
+#        false
+#      end
+#      puts "Overriding the build_as_static_framework? method for #{pod.name}"
+#      def pod.build_as_static_framework?
+#        true
+#      end
+#    end
+#  end
+#end
 
 target 'MixedErrorLog_Example' do
   pod 'MixedErrorLog', :path => '../'

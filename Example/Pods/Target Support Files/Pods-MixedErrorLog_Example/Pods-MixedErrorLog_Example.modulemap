@@ -1,4 +1,4 @@
-framework module Pods_MixedErrorLog_Example {
+module Pods_MixedErrorLog_Example {
   umbrella header "Pods-MixedErrorLog_Example-umbrella.h"
 
   export *
